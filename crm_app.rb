@@ -117,7 +117,7 @@ class CRM
 		main_menu
 	end
 
-	def delete_program
+	def delete_contact
 		print "Enter the ID of the contact you want to delete: "
 		contact_id = display_one_contact
 		puts "Is this the contact you want to delete? [Y or N or exit]"
@@ -133,6 +133,7 @@ class CRM
 	end
 
 	def exit_program
+		puts "\e[H\e[2J"
 	end
 
 end
