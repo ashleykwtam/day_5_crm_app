@@ -16,7 +16,14 @@ class CRM
 		puts "Enter a number: "
 	end
 
-	def call_option(user_selected)
+	def call_option(user_selected)		# this method calls on other methods based on the number
+		add_new_contact if user_selected == 1
+		modify_existing_contact if user_selected == 2
+		display_all_contacts if user_selected == 3
+		display_one_contact if user_selected == 4
+		display_certain_attribute if user_selected == 5
+		delete_contact if user_selected == 6
+		exit_program if user_selected == 7
 	end
 end
 
