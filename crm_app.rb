@@ -3,6 +3,8 @@ require_relative "rolodex"
 
 class CRM
 
+	attr_accessor :name
+
 	def self.run(name)			# self is a class method
 		crm = CRM.new(name)
 		crm.main_menu
@@ -10,6 +12,8 @@ class CRM
 
 	def initialize(name)		# need an initialize method to call on name
 		@name = name
+		@rolodex = Rolodex.new
+		puts "Welcome to #{name}'s CRM."
 	end
 
 	def main_menu
@@ -49,7 +53,13 @@ class CRM
 		email = gets.chomp
 		print "Enter a note: "
 		note = gets.chomp
-		contact = Contact.new(first_name, last_name, email, note)
+		@rolodex.add_contact(Contact.new(first_name, last_name, email, note))
+		main_menu
+	end
+
+	def modify_existing_contact
+		print "Enter a contact attribute to be modified: "
+
 	end
 
 end
