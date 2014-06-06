@@ -70,17 +70,29 @@ class CRM
 	# 	main_menu
 	# end
 
+	def print_attribute_list
+		puts "Which attribute do you want to modify?"
+		puts "[1] First name"
+		puts "[2] Last name"
+		puts "[3] Email"
+		puts "[4] Notes"
+		print "Enter a number: "
+	end
+
 	def modify_existing_contact
-		display_all_contacts
-		puts "Is this the contact you want to edit? [Y or N or exit]"
-		case gets.chomp.downcase
-		when "Y"
-			@rolodex.modify_contact(contact_id, create_new_contact)
-		when "N"
-			modify_existing_contact
-		when "exit"
-			main_menu
-		end
+		@rolodex.display_contact
+		@rolodex.modify_contact
+		# print_attribute_list
+		# puts "Is this the contact you want to edit? [Y or N or exit]"
+		# case gets.chomp.downcase
+		# when "Y"
+		# 	@rolodex.modify_contact(contact_id, create_new_contact)
+		# when "N"
+		# 	modify_existing_contact
+		# when "exit"
+		# 	main_menu
+		# end
+		# @rolodex.change_attribute
 		main_menu
 	end
 
@@ -99,14 +111,6 @@ class CRM
 	# def display_one_contact
 	# 	print "Enter contact ID: "
 	# 	display_contact
-	# end
-
-	# def print_attribute_list
-	# 	puts "Which attribute do you want to modify?"
-	# 	puts "[1] First name"
-	# 	puts "[2] Last name"
-	# 	puts "[3] Email"
-	# 	puts "[4] Notes"
 	# end
 
 	def display_certain_attribute
