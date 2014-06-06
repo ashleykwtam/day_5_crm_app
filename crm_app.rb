@@ -36,10 +36,9 @@ class CRM
 		when 1 then add_new_contact
 		when 2 then modify_existing_contact
 		when 3 then display_all_contacts
-		when 4 then display_one_contact
-		when 5 then display_certain_attribute
-		when 6 then delete_contact
-		when 7 then exit_program
+		when 4 then display_certain_attribute
+		when 5 then delete_contact
+		when 6 then exit_program
 		end
 	end
 
@@ -72,7 +71,7 @@ class CRM
 	# end
 
 	def modify_existing_contact
-		display_one_contact
+		display_all_contacts
 		puts "Is this the contact you want to edit? [Y or N or exit]"
 		case gets.chomp.downcase
 		when "Y"
@@ -85,15 +84,16 @@ class CRM
 		main_menu
 	end
 
-	def display_contact
-		contact_id = gets.chomp.to_i
-		puts @rolodex.find_contact(contact_id)
-		# contact_id
-	end
+	# def display_contact
+	# 	contact_id = gets.chomp.to_i
+	# 	puts @rolodex.find_contact(contact_id)
+	# 	# contact_id
+	# end
 
 
 	def display_all_contacts
 		@rolodex.display_contact
+		main_menu
 	end
 
 	# def display_one_contact
@@ -101,13 +101,13 @@ class CRM
 	# 	display_contact
 	# end
 
-	def print_attribute_list
-		puts "Which attribute do you want to modify?"
-		puts "[1] First name"
-		puts "[2] Last name"
-		puts "[3] Email"
-		puts "[4] Notes"
-	end
+	# def print_attribute_list
+	# 	puts "Which attribute do you want to modify?"
+	# 	puts "[1] First name"
+	# 	puts "[2] Last name"
+	# 	puts "[3] Email"
+	# 	puts "[4] Notes"
+	# end
 
 	def display_certain_attribute
 		print_attribute_list
@@ -117,17 +117,19 @@ class CRM
 	end
 
 	def delete_contact
-		print "Enter the ID of the contact you want to delete: "
-		contact_id = display_one_contact
-		puts "Is this the contact you want to delete? [Y or N or exit]"
-		case gets.chomp.downcase
-		when "Y"
-			@rolodex.delete_contact(contact_id)
-		when "N"
-			delete_contact
-		when "exit"
-			main_menu
-		end
+		@rolodex.display_contact
+		# print "Enter the ID of the contact you want to delete: "
+		# contact_id = display_all_contacts
+		@rolodex.delete_contact
+		# puts "Is this the contact you want to delete? [Y or N or exit]"
+		# case gets.chomp.downcase
+		# when "Y"
+		# 	@rolodex.delete_contact(contact_id)
+		# when "N"
+		# 	delete_contact
+		# when "exit"
+		# 	main_menu
+		# end
 		main_menu
 	end
 

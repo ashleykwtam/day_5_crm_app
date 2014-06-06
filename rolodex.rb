@@ -7,8 +7,9 @@ class Rolodex
 	end
 
 	def add_contact(contact)
-		@contacts << contact
 		contact.id = @id
+		# @contacts << @id
+		@contacts << contact
 		@id += 1
 	end
 
@@ -29,7 +30,9 @@ class Rolodex
 	end
 
 	def delete_contact
-		@contacts.delete_at[contact_index(find_contact(contact_id))]
+		print "Enter the ID of the contact you want to delete: "
+		contact_to_delete = gets.chomp.to_i
+		@contacts.delete_at(contact_to_delete - 1)
 	end
 
 	def display_attribute(attribute)
