@@ -1,5 +1,8 @@
 class CRM
 	def main_menu
+		print_main_menu
+		user_selected = gets.to_i			# stores a number into user_selected
+		call_option(user_selected)		# variable passed into a method called call_option
 	end
 
 	def print_main_menu
@@ -25,4 +28,4 @@ class Rolodex
 end
 
 a_crm_app = CRM.new
-a_crm_app.print_main_menu
+a_crm_app.main_menu
