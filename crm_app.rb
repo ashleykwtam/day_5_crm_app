@@ -13,7 +13,7 @@ class CRM
 	def initialize(name)		# need an initialize method to call on name
 		@name = name
 		@rolodex = Rolodex.new
-		puts "Welcome to #{name}'s CRM."
+		puts "Welcome to #{name}'s CRM."	# only outputs once
 	end
 
 	def main_menu
@@ -44,7 +44,7 @@ class CRM
 		end
 	end
 
-	def add_new_contact								# need to put method in the same class
+	def create_new_contact							# need to put method in the same class
 		print "Enter first name: "
 		first_name = gets.chomp
 		print "Enter last name: "
@@ -53,13 +53,86 @@ class CRM
 		email = gets.chomp
 		print "Enter a note: "
 		note = gets.chomp
-		@rolodex.add_contact(Contact.new(first_name, last_name, email, note))
+		contact = Contact.new(first_name, last_name, email, note)
+	end
+
+	def add_new_contact
+		contact = create_new_contact
+		puts contact
+		puts "Confirm adding new contact: [Y or N]"
+		case gets.chomp.downcase
+		when "Y"
+			@rolodex.add_contact(contact)
+			main_menu
+		when "N"
+			add_new_contact
+		end
 		main_menu
 	end
 
 	def modify_existing_contact
-		print "Enter a contact attribute to be modified: "
+		print "Enter the ID of the contact you want to be modified: "
+		contact_id = display_one_contact
+		puts "Is this the contact you want to edit? [Y or N or exit]"
+		case gets.chomp.downcase
+		when "Y"
+			@rolodex.modify_contact(contact_id, create_new_contact)
+		when "N"
+			modify_existing_contact
+		when "exit"
+			main_menu
+		end
+		main_menu
+	end
 
+	def display_contact
+		contact_id = gets.chomp.to_i
+		puts @rolodex.find_contact(contact_id)
+		contact_id
+	end
+
+	def display_all_contacts
+		@rolodex.contacts.each { |contact| puts contact.to_s }
+		main_menu
+	end
+
+	def display_one_contact
+		print "Enter contact ID: "
+		display_contact
+		main_menu
+	end
+
+	def print_attribute_list
+		puts "Which attribute do you want to modify?"
+		puts "[1] First name"
+		puts "[2] Last name"
+		puts "[3] Email"
+		puts "[4] Notes"
+	end
+
+	def display_certain_attribute
+		print_attribute_list
+		choice = gets.chomp.to_i
+		@rolodex.display_attribute(choice)
+		main_menu
+	end
+
+	def delete_program
+		print "Enter the ID of the contact you want to delete: "
+		contact_id = display_one_contact
+		puts "Is this the contact you want to delete? [Y or N or exit]"
+		case gets.chomp.downcase
+		when "Y"
+			@rolodex.delete_contact(contact_id)
+		when "N"
+			delete_contact
+		when "exit"
+			main_menu
+		end
+		main_menu
+	end
+
+	def exit_program
 	end
 
 end
