@@ -71,8 +71,7 @@ class CRM
 	end
 
 	def modify_existing_contact
-		print "Enter the ID of the contact you want to be modified: "
-		contact_id = display_one_contact
+		display_one_contact
 		puts "Is this the contact you want to edit? [Y or N or exit]"
 		case gets.chomp.downcase
 		when "Y"
@@ -88,11 +87,11 @@ class CRM
 	def display_contact
 		contact_id = gets.chomp.to_i
 		puts @rolodex.find_contact(contact_id)
-		contact_id
+		# contact_id
 	end
 
 	def display_all_contacts
-		@rolodex.contacts.each { |contact| puts contact.to_s }
+		@rolodex.display_contact.each { |contact| puts contact.to_s }
 		main_menu
 	end
 

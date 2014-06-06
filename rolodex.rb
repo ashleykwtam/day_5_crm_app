@@ -1,11 +1,9 @@
 class Rolodex
+	attr_reader :contacts
+
 	def initialize
 		@contacts = []
-		@id = 0
-	end
-
-	def contacts
-		@contacts
+		@id = 1
 	end
 
 	def add_contact(contact)
@@ -15,15 +13,19 @@ class Rolodex
 	end
 
 	def find_contact(contact_id)
-		@contacts.find { |contact| contact.id == id }
+		@contacts.find { |contact| contact_id == id }
 	end
 
+	def display_contact
+		@contacts.each { |contact| puts "#{contact.first_name.capitalize} #{contact.last_name.capitalize}, Email: #{contact.email}, Notes: #{contact.note}"}
+	end
+	
 	def contact_index(contact)
 		@contacts.index(contact)
 	end
 
 	def modify_contact
-		@contacts[contact_index(find_contact(@contact_id))] = contact
+		@contacts[contact_index(find_contact(contact_id))] = contact
 	end
 
 	def delete_contact
