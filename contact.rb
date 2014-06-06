@@ -1,6 +1,5 @@
 class Contact
-	def initialize(id, first_name, last_name, email, note)
-		@id = id
+	def initialize(first_name, last_name, email, note)
 		@first_name = first_name
 		@last_name = last_name
 		@email = email
@@ -8,8 +7,6 @@ class Contact
 	end
 
 	def add_new_contact
-		print "Enter id (e.g. Mr, Mrs, Ms): "
-		id = gets.chomp
 		print "Enter first name: "
 		first_name = gets.chomp
 		print "Enter last name: "
@@ -18,7 +15,7 @@ class Contact
 		email = gets.chomp
 		print "Enter a note: "
 		note = gets.chomp
-		contact = Contact.new(id, first_name, last_name, email, note)
+		contact = Contact.new(first_name, last_name, email, note)
 	end
 
 	def modify_existing_contact
