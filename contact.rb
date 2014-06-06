@@ -1,4 +1,4 @@
-class Contact < CRM
+class Contact
 	def initialize(id, first_name, last_name, email, note)
 		@id = id
 		@first_name = first_name

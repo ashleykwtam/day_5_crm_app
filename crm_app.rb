@@ -2,6 +2,12 @@ require_relative "contact"		# require_relative calls other files and inputs into
 require_relative "rolodex"
 
 class CRM
+
+	def self.run(name)			# self is a class method
+		crm = CRM.new("name")
+		crm.main_menu
+	end
+
 	def main_menu
 		print_main_menu
 		user_selected = gets.to_i			# stores a number into user_selected
@@ -36,4 +42,4 @@ a_crm_app = CRM.new
 a_crm_app.print_main_menu
 
 adrian = Contact.new("Mr", "Adrian", "Chan", "achan@gmail.com", "my bruh")
-puts adrian.add_new_contact
+CRM.run("my CRM")
