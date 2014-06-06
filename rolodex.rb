@@ -17,7 +17,7 @@ class Rolodex
 	end
 
 	def display_contact
-		@contacts.each { |contact| puts "#{contact.first_name.capitalize} #{contact.last_name.capitalize}, Email: #{contact.email}, Notes: #{contact.note}"}
+		@contacts.each { |contact| puts contact }
 	end
 	
 	def contact_index(contact)

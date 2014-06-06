@@ -9,4 +9,8 @@ class Contact
 		@note = note
 	end
 
+	def to_s
+		"#{first_name} #{last_name}, Email: #{email}, Notes: #{note}"
+	end
+
 end

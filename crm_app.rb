@@ -26,10 +26,9 @@ class CRM
 		puts "[1] Add a new contact"
 		puts "[2] Modify an existing contact"
 		puts "[3] Display all contacts"
-		puts "[4] Display one contact"
-		puts "[5] Display a certain attribute"
-		puts "[6] Delete a contact"
-		puts "[7] Exit"
+		puts "[4] Display a certain attribute"
+		puts "[5] Delete a contact"
+		puts "[6] Exit"
 	end
 
 	def call_option(user_selected)		# this method calls on other methods based on the number
@@ -44,7 +43,7 @@ class CRM
 		end
 	end
 
-	def create_new_contact							# need to put method in the same class
+	def add_new_contact							# need to put method in the same class
 		print "Enter first name: "
 		first_name = gets.chomp
 		print "Enter last name: "
@@ -53,22 +52,24 @@ class CRM
 		email = gets.chomp
 		print "Enter a note: "
 		note = gets.chomp
-		contact = Contact.new(first_name, last_name, email, note)
-	end
-
-	def add_new_contact
-		contact = create_new_contact
-		puts contact
-		puts "Confirm adding new contact: [Y or N]"
-		case gets.chomp.downcase
-		when "Y"
-			@rolodex.add_contact(contact)
-			main_menu
-		when "N"
-			add_new_contact
-		end
+		# print "Your name is #{first_name} #{last_name}, your email is #{email} and your notes are #{note}".
+		@rolodex.add_contact(Contact.new(first_name, last_name, email, note))
 		main_menu
 	end
+
+	# def add_new_contact
+	# 	contact = create_new_contact
+	# 	puts "Confirm adding new contact: [Y or N]"
+	# 	case gets.chomp.downcase
+	# 	when "Y"
+	# 		@rolodex.add_contact(contact)
+	# 		print "Your name is #{first_name} #{last_name}, your email is #{email} and your notes are #{note}".
+	# 		main_menu
+	# 	when "N"
+	# 		add_new_contact
+	# 	end
+	# 	main_menu
+	# end
 
 	def modify_existing_contact
 		display_one_contact
@@ -90,16 +91,15 @@ class CRM
 		# contact_id
 	end
 
+
 	def display_all_contacts
-		@rolodex.display_contact.each { |contact| puts contact.to_s }
-		main_menu
+		@rolodex.display_contact
 	end
 
-	def display_one_contact
-		print "Enter contact ID: "
-		display_contact
-		main_menu
-	end
+	# def display_one_contact
+	# 	print "Enter contact ID: "
+	# 	display_contact
+	# end
 
 	def print_attribute_list
 		puts "Which attribute do you want to modify?"
