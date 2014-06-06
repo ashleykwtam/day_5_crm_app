@@ -14,8 +14,7 @@ class CRM
 
 	def main_menu
 		print_main_menu
-		user_selected = gets.to_i			# stores a number into user_selected
-		call_option(user_selected)		# variable passed into a method called call_option
+		call_option(gets.chomp.to_i)		# variable passed into a method called call_option
 	end
 
 	def print_main_menu
@@ -30,16 +29,29 @@ class CRM
 	end
 
 	def call_option(user_selected)		# this method calls on other methods based on the number
-		case user_selected
-		when "1" then add_new_contact
-		when "2" then modify_existing_contact
-		when "3" then display_all_contacts
-		when "4" then display_one_contact
-		when "5" then display_certain_attribute
-		when "6" then delete_contact
-		when "7" then exit_program
+		case user_selected							# changed to case method
+		when 1 then add_new_contact
+		when 2 then modify_existing_contact
+		when 3 then display_all_contacts
+		when 4 then display_one_contact
+		when 5 then display_certain_attribute
+		when 6 then delete_contact
+		when 7 then exit_program
 		end
 	end
+
+	def add_new_contact								# need to put method in the same class
+		print "Enter first name: "
+		first_name = gets.chomp
+		print "Enter last name: "
+		last_name = gets.chomp
+		print "Enter email address: "
+		email = gets.chomp
+		print "Enter a note: "
+		note = gets.chomp
+		contact = Contact.new(first_name, last_name, email, note)
+	end
+
 end
 
 
