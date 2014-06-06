@@ -27,12 +27,34 @@ class CRM
 	end
 end
 
+class Contact < CRM
+	def initialize
+	end
 
-class Contact
+	def add_new_contact
+	end
+
+	def modify_existing_contact
+	end
+
+	def display_all_contacts
+	end
+
+	def display_one_contact
+	end
+
+	def display_certain_attribute
+	end
+
+	def delete_program
+	end
+
+	def exit_program
+	end
 end
 
 class Rolodex
 end
 
 a_crm_app = CRM.new
-a_crm_app.main_menu
+a_crm_app.print_main_menu
