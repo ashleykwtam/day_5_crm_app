@@ -63,3 +63,6 @@ end
 
 a_crm_app = CRM.new
 a_crm_app.print_main_menu
+
+adrian = Contact.new("Mr", "Adrian", "Chan", "achan@gmail.com", "my bruh")
+puts adrian
