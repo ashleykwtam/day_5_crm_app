@@ -28,7 +28,6 @@ class Contact
 	end
 
 	def display_certain_attribute
-		
 	end
 
 	def delete_program

@@ -1,7 +1,7 @@
 class Rolodex
 	def initialize
 		@contacts = []
-		@id = 1000
+		@id = 0
 	end
 
 	def contacts
@@ -12,5 +12,8 @@ class Rolodex
 		contact.id = @id
 		@contacts << contact
 		@id += 1
+	end
+
+	def find_contact(contact_id)
 	end
 end
