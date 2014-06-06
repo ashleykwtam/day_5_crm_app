@@ -37,6 +37,17 @@ class Contact < CRM
 	end
 
 	def add_new_contact
+		print "Enter id (e.g. Mr, Mrs, Ms): "
+		id = gets.chomp
+		print "Enter first name: "
+		first_name = gets.chomp
+		print "Enter last name: "
+		last_name = gets.chomp
+		print "Enter email address: "
+		email = gets.chomp
+		print "Enter a note: "
+		note = gets.chomp
+		contact = Contact.new(id, first_name, last_name, email, note)
 	end
 
 	def modify_existing_contact
@@ -65,4 +76,4 @@ a_crm_app = CRM.new
 a_crm_app.print_main_menu
 
 adrian = Contact.new("Mr", "Adrian", "Chan", "achan@gmail.com", "my bruh")
-puts adrian
+puts adrian.add_new_contact
