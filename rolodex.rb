@@ -28,7 +28,7 @@ class Rolodex
 		@contacts.each { |contact| puts contact }
 	end
 
-		def contact_index(contact)
+	def contact_index(contact)
 		@contacts.index(contact)
 	end
 
