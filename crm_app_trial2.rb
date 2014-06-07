@@ -65,6 +65,9 @@ class CRM
 	end
 
 	def modify_contact
+		@rolodex_trial2.display_contact
+		@rolodex_trial2.modify_contact
+		main_menu
 	end
 
 	def display_contacts
