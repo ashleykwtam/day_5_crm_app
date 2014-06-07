@@ -1,18 +1,19 @@
 require_relative "rolodex_trial2"
+require_relative "contact_trial2"
 
 class CRM
 
 	attr_accessor :name
 
-	def initialize(name)
-		@name = name
-		# @rolodex = Rolodex.new
-		puts "Welcome to #{name}'s CRM."
-	end
-
 	def self.run(name)
 		crm = CRM.new(name)
 		crm.main_menu
+	end
+
+	def initialize(name)
+		@name = name
+		@rolodex_trial2 = Rolodex.new
+		puts "Welcome to #{name}'s CRM."
 	end
 
 	def main_menu
@@ -39,7 +40,7 @@ class CRM
 		end
 	end
 
-	def get_user_info
+	def get_user_info								# if use get_user_info in add_new_contact the scope cannot work for @rolodex.add_contact
 		print "Enter the first name: "
 		first_name = gets.chomp
 		print "Enter the last name: "
@@ -51,8 +52,15 @@ class CRM
 	end
 
 	def add_new_contact
-		get_user_info
-		@rolodex.add_contact(Contact.new(first_name, last_name, email, note))
+		print "Enter the first name: "
+		first_name = gets.chomp
+		print "Enter the last name: "
+		last_name = gets.chomp
+		print "Enter an email address: "
+		email = gets.chomp
+		print "Enter a note: "
+		note = gets.chomp
+		@rolodex_trial2.add_contact(Contact.new(first_name, last_name, email, note))
 		main_menu
 	end
 
@@ -60,12 +68,24 @@ class CRM
 	end
 
 	def display_contacts
+		@rolodex_trial2.display_contact
+		main_menu
 	end
 
 	def delete_contact
+		@rolodex_trial2.display_contact
+		@rolodex_trial2.delete_contact
+		main_menu
+	end
+
+	def exit_message
+		print "You are now exiting #{name}'s contact book. Goodbye."
 	end
 
 	def exit_program
+		exit_message
+		exit
+		# print "\e[H\e[2J"
 	end
 
 end
