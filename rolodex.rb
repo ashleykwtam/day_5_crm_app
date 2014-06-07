@@ -27,8 +27,8 @@ class Rolodex
 	def display_contact
 		@contacts.each { |contact| puts contact }
 	end
-	
-	def contact_index(contact)
+
+		def contact_index(contact)
 		@contacts.index(contact)
 	end
 
@@ -54,12 +54,12 @@ class Rolodex
 		new_value = gets.chomp
 		find_contact(contact_to_modify).send(attribute, new_value)
 
-		contact.send(:first_name) # => "Kash"
-		contact.first_name # => "Kash"
+		# contact.send(:first_name) # => "Kash"
+		# contact.first_name # => "Kash"
 
-		attribute = :first_name
-		contact.attribute 	# if you use .attribute, it will return an error trying to call attribute method which there is none
-		contact.send(attribute) # => contact.first_name 
+		# attribute = :first_name
+		# contact.attribute 	# if you use .attribute, it will return an error trying to call attribute method which there is none
+		# contact.send(attribute) # => contact.first_name 
 		# instead, .send is a valid method that will call upon attribute and set it to firstname value
 
 
