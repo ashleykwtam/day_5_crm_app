@@ -15,13 +15,18 @@ class Rolodex
 	end
 
 	def display_contact
-		@contacts.each { |contact| puts contact }
+		puts "Your contact list is: "
+		puts "\n"
+		@contacts.each do |contact| 
+			puts contact
+			puts "\n"
+		end
 	end
 
 	def delete_contact
 		print "Enter the ID number of the contact you wish to delete: "
-		contact_to_delete = gets.chomp
-		@contacts.delete_at(contact_to_delete -1)
+		contact_to_delete = gets.chomp.to_i
+		@contacts.delete_at(contact_to_delete - 1)
 	end
 
 	def modify_contact
@@ -46,6 +51,7 @@ class Rolodex
 		when 4
 			find_contact(contact_to_modify).note = new_value
 		end
+		puts "You have modified #{item_to_modify} to #{new_value}."
 	end
 
 	def find_contact(x)

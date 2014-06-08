@@ -9,9 +9,9 @@ class Contact
 		@id = id
 	end
 
-	def to_s
+	def to_s  	# where am i calling this??
 		"Contact ID number is #{id}" "\n" <<
-		"Contact info is: #{first_name} #{last_name}, Email: #{email}, Note: #{note}"
+		"Contact info is: #{first_name} #{last_name}, Email: #{email}, Note: #{note}" <<
+		"\n"
 	end
 end
-
