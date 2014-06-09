@@ -85,6 +85,7 @@ class CRM
 	def display_contacts
 		clear_screen
 		@rolodex_trial2.display_contact
+		puts "\n"
 		main_menu
 	end
 
@@ -92,7 +93,7 @@ class CRM
 		clear_screen
 		@rolodex_trial2.display_contact
 		puts "\n"
-		@rolodex_trial2.delete_contact
+		@rolodex_trial2.delete_contact(Contact.new(@first_name, @last_name, @email, @note))
 		puts "\n"
 		main_menu
 	end
@@ -111,4 +112,4 @@ class CRM
 end
 
 
-CRM.run("yolo")
+CRM.run("Candy")

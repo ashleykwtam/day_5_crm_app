@@ -23,10 +23,19 @@ class Rolodex
 		end
 	end
 
-	def delete_contact
+	def delete_contact(contact)
 		print "Enter the ID number of the contact you wish to delete: "
 		contact_to_delete = gets.chomp.to_i
-		@contacts.delete_at(contact_to_delete - 1)
+		contact_id = find_contact(contact_to_delete, true)
+		@contacts.delete_at(contact_id)
+
+
+		@contacts.drop(contact_id).each { |contact| contact.id -= 1 }
+		# drop changes the ID numbers by losing that contact ID number and returning ID -1 in the array
+
+		# @id = contact.id
+		# @contacts << contact
+		# @id -= 1
 	end
 
 	def modify_contact
@@ -54,8 +63,9 @@ class Rolodex
 		puts "You have modified #{item_to_modify} to #{new_value}."
 	end
 
-	def find_contact(x)
-		@contacts.find { |contact| contact.id == x }
+	def find_contact(x, index = false)
+		contact = @contacts.find { |contact| contact.id == x }
+		index ? @contacts.index(contact) : contact
 	end
 
 end
